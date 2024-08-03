@@ -5,7 +5,8 @@ from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter
 from wxcloudrun.model import Counters
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
 from volcenginesdkarkruntime import Ark
-
+from flask import Flask
+#app = Flask(__name__)
 client = Ark(api_key="75548df3-2038-4ae2-9235-db694978cbe9")
 @app.route('/')
 def index():
