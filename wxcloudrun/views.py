@@ -62,9 +62,9 @@ def get_count():
     """
     :return: 计数的值
     """
-    #counter.id = 1
-    #counter.count += 1
-    #counter.updated_at = datetime.now()
-    #update_counterbyid(counter)
+    counter.id = 1
+    counter.count += 1
+    counter.updated_at = datetime.now()
+    update_counterbyid(counter)
     counter = Counters.query.filter(Counters.id == 1).first()
     return make_succ_response(0) if counter is None else make_succ_response(counter.count)
