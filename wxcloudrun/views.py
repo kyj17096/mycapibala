@@ -74,7 +74,7 @@ def get_count():
     #app.logger.info(question_str)
     messages = [
         
-        {"role": "user", "content": question_str},
+        {"role": "user", "content": ""},
     ],
     )
     #counter = Counters.query.filter(Counters.id == 1).first()
