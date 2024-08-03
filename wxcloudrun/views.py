@@ -4,8 +4,9 @@ from run import app
 from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
 from wxcloudrun.model import Counters
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
+from volcenginesdkarkruntime import Ark
 
-
+client = Ark(api_key="75548df3-2038-4ae2-9235-db694978cbe9")
 @app.route('/')
 def index():
     """
@@ -62,10 +63,13 @@ def get_count():
     """
     :return: 计数的值
     """
-    counter = query_counterbyid(1)
-    counter.id = 1
-    counter.count += 1
-    counter.updated_at = datetime.now()
-    update_counterbyid(counter)
-    counter = Counters.query.filter(Counters.id == 1).first()
-    return make_succ_response(0) if counter is None else make_succ_response(counter.count)
+    completion = client.chat.completions.create(
+    model="ep-20240803173432-g426f",
+    messages = [
+        
+        {"role": "user", "content": "常见的十字花科植物有哪些？"},
+    ],
+    )
+    #counter = Counters.query.filter(Counters.id == 1).first()
+    resp1=completion.choices[0].message.content
+    return make_succ_response(0) if resp1 is None else make_succ_response(resp1)
