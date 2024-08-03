@@ -62,6 +62,7 @@ def get_count():
     """
     :return: 计数的值
     """
+    counter = query_counterbyid(1)
     counter.id = 1
     counter.count += 1
     counter.updated_at = datetime.now()
