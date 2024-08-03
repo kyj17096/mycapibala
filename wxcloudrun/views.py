@@ -68,10 +68,9 @@ def get_count():
     birth_date = request.args.get('birth_date')
     qiwang = request.args.get('qiwang')
     name_word_number = request.args.get('name_word_number')
+    question_str = "请帮忙根据以下信息取9个不同的名字，姓氏:"+family_name+",性别:"+gender+",出生年月日:"+birth_date+",名字字数:"+name_word_number+",字面意思:"+qiwang
     completion = client.chat.completions.create(
     model="ep-20240803173432-g426f",
-    question_str = "请帮忙根据以下信息取9个不同的名字，姓氏:"+family_name+",性别:"+gender+",出生年月日:"+birth_date+",名字字数:"+name_word_number+",字面意思:"+qiwang,
-    #app.logger.info(question_str)
     messages = [
         {"role": "user", "content": question_str},
     ],
